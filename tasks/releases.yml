@@ -1,0 +1,9 @@
+---
+
+- name: add escapace repository
+  get_url:
+    url: https://releases.escapace.com/stable/linux/centos/escapace.repo
+    dest: /etc/yum.repos.d/escapace.repo
+    owner: root
+    group: root
+    mode: 0644
