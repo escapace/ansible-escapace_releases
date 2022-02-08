@@ -1,5 +1,10 @@
 ---
 
+- name: add escapace gpg keys
+  ansible.builtin.rpm_key:
+    state: present
+    key: https://releases.escapace.com/GPG-KEY-ESCAPACE
+
 - name: add escapace repository
   get_url:
     url: https://releases.escapace.com/stable/linux/centos/escapace.repo
