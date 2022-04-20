@@ -6,7 +6,7 @@
     key: https://releases.escapace.com/GPG-KEY-ESCAPACE
 
 - name: add escapace repository
-  get_url:
+  ansible.builtin.get_url:
     url: https://releases.escapace.com/stable/linux/centos/escapace.repo
     dest: /etc/yum.repos.d/escapace.repo
     owner: root
