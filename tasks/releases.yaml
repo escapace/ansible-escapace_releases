@@ -1,4 +1,14 @@
 ---
+- name: install dependencies
+  ansible.builtin.dnf:
+    name: "{{ packages }}"
+    state: present
+    update_cache: true
+  vars:
+    packages:
+      - dnf-plugins-core
+      - gnupg2
+
 - name: add escapace gpg keys
   ansible.builtin.rpm_key:
     state: present
