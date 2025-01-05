@@ -20,4 +20,4 @@
     dest: /etc/yum.repos.d/escapace.repo
     owner: root
     group: root
-    mode: '0644'
+    mode: "0644"
