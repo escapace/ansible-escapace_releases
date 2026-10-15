@@ -17,6 +17,8 @@
 - name: add escapace repository
   ansible.builtin.get_url:
     url: https://releases.escapace.com/stable/linux/centos/escapace.repo
+    use_netrc: false
+    timeout: 30
     dest: /etc/yum.repos.d/escapace.repo
     owner: root
     group: root

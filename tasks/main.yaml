@@ -1,5 +1,6 @@
 ---
-- ansible.builtin.include_tasks: releases.yaml
+- name: configure escapace repository on supported platforms
+  ansible.builtin.include_tasks: releases.yaml
   when: >-
     ansible_facts["os_family"] == "RedHat" and (
     (ansible_facts["distribution"] == "CentOS" and ansible_facts["distribution_major_version"]|int > 8) or

@@ -1,0 +1,30 @@
+---
+- name: verify
+  hosts: all
+  gather_facts: false
+  tasks:
+    - name: inspect escapace repository configuration
+      ansible.builtin.stat:
+        path: /etc/yum.repos.d/escapace.repo
+      register: escapace_releases_repository
+
+    - name: verify persistent repository configuration
+      ansible.builtin.assert:
+        that:
+          - escapace_releases_repository.stat.isreg | default(false)
+          - escapace_releases_repository.stat.uid == 0
+          - escapace_releases_repository.stat.gid == 0
+          - escapace_releases_repository.stat.mode == "0644"
+          - escapace_releases_repository.stat.size > 0
+
+    - name: verify signing key is already trusted
+      ansible.builtin.rpm_key:
+        state: present
+        key: https://releases.escapace.com/GPG-KEY-ESCAPACE
+      check_mode: true
+      register: escapace_releases_signing_key
+
+    - name: verify signing key needs no changes
+      ansible.builtin.assert:
+        that:
+          - not escapace_releases_signing_key.changed

@@ -1,5 +1,6 @@
 ---
-collections: []
+collections:
+  - name: community.general
 
 roles:
   - name: escapace.epel
