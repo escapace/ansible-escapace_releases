@@ -21,9 +21,9 @@
       ansible.builtin.rpm_key:
         state: present
         key: https://releases.escapace.com/GPG-KEY-ESCAPACE
-      check_mode: true
       register: escapace_releases_signing_key
 
+      check_mode: true
     - name: verify signing key needs no changes
       ansible.builtin.assert:
         that:
